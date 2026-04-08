@@ -75,7 +75,12 @@ source venv/bin/activate        # Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-Download the Lending Club dataset from [Kaggle](https://www.kaggle.com/datasets/wordsforthewise/lending-club), place it at `data/loans_cleaned.csv`, then run the full pipeline:
+The repository already contains the cleaned dataset used for analysis:
+
+`data/processed/loans_cleaned.csv`
+
+You can directly run the analysis pipeline without downloading the raw LendingClub dataset.
+
 
 ```bash
 python run_analysis.py
