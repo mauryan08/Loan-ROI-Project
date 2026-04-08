@@ -1,0 +1,29 @@
+2026-04-08 06:15:54  INFO      __main__  —  Logging configured. DEBUG log -> reports\pipeline.log
+2026-04-08 06:15:54  INFO      __main__  —  ============================================================
+2026-04-08 06:15:54  INFO      __main__  —  CREDIT PORTFOLIO ANALYTICS PIPELINE  —  STARTED
+2026-04-08 06:15:54  INFO      __main__  —  ============================================================
+2026-04-08 06:15:54  INFO      __main__  —  Data path   : data\processed\loans_cleaned.csv
+2026-04-08 06:15:54  INFO      __main__  —  Output dir  : reports
+2026-04-08 06:15:54  INFO      src.data_loader  —  Loading dataset from data\processed\loans_cleaned.csv
+2026-04-08 06:15:54  INFO      src.data_loader  —  Raw dataset shape: 200000 rows × 14 columns
+2026-04-08 06:15:54  INFO      src.data_loader  —  All required columns present.
+2026-04-08 06:15:54  DEBUG     src.data_loader  —  After dropping nulls in core fields: 200000 rows
+2026-04-08 06:15:54  INFO      src.data_loader  —  Validated dataset: 200000 loans ready for analysis.
+2026-04-08 06:15:54  INFO      src.feature_engineering  —  Feature engineering complete. Columns added: net_return, roi_pct, term_years, annualized_roi, is_default, issue_year, rate_bucket.
+2026-04-08 06:15:54  INFO      src.risk_metrics  —  Portfolio KPIs computed: 200000 loans, $2.88B funded, 3.36% avg ROI.
+2026-04-08 06:15:54  INFO      src.risk_metrics  —  Grade summary computed for 7 grades.
+2026-04-08 06:15:55  INFO      src.risk_metrics  —  Rate-bucket summary computed for 5 buckets.
+2026-04-08 06:15:55  INFO      src.risk_metrics  —  Cohort summary computed for 12 vintage years.
+2026-04-08 06:15:58  INFO      src.dashboard_builder  —  Page 1 dashboard saved -> reports\dashboard_page1_overview.png
+2026-04-08 06:16:19  INFO      src.dashboard_builder  —  Page 2 dashboard saved -> reports\dashboard_page2_risk.png
+2026-04-08 06:16:20  INFO      src.report_generator  —  PDF page 1 (executive summary) written.
+2026-04-08 06:16:21  INFO      src.report_generator  —  PDF page 2 (risk profile) written.
+2026-04-08 06:16:21  INFO      src.report_generator  —  PDF page 3 (risk vs return) written.
+2026-04-08 06:16:22  INFO      src.report_generator  —  PDF page 4 (cohort analysis) written.
+2026-04-08 06:16:22  INFO      src.report_generator  —  PDF page 5 (recommendations) written.
+2026-04-08 06:16:23  INFO      src.report_generator  —  CSV tables exported to reports/
+2026-04-08 06:16:23  INFO      src.report_generator  —  Portfolio metrics JSON exported -> reports\portfolio_metrics.json
+2026-04-08 06:16:23  INFO      src.report_generator  —  Insights text exported -> reports\insights.txt
+2026-04-08 06:16:23  INFO      __main__  —  ============================================================
+2026-04-08 06:16:23  INFO      __main__  —  PIPELINE COMPLETE.  All outputs in: reports/
+2026-04-08 06:16:23  INFO      __main__  —  ============================================================

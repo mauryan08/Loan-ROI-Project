@@ -1,0 +1,15 @@
+CREDIT PORTFOLIO ANALYSIS — KEY FINDINGS
+=======================================================
+
+1. Grade 'A' delivers the strongest risk-adjusted return (-0.22%) after accounting for a 5.9% default rate. Recommended for portfolio overweight.
+
+2. Grade 'G' has the lowest risk-adjusted ROI (-56.83%). High nominal yield is fully eroded by default losses — avoid or underweight.
+
+3. Grade 'G' carries the highest default rate (51.6%). Position sizing must reflect tail-risk exposure.
+
+4. The interest-rate sweet spot is bucket '(0.043, 0.089]' (avg 0.1%), producing the highest raw ROI (5.22%). Above this band, incremental default losses outpace the extra interest income.
+
+5. Loans issued in 2013 showed the highest average ROI. Recent vintages are under-represented due to incomplete loan lifecycles — survivorship bias caution applies.
+
+6. Portfolio-level risk-adjusted ROI is -15.03% versus a gross average ROI of 3.36%. The 18.39% spread represents the expected-loss drag on portfolio returns.
+
