@@ -33,8 +33,8 @@ This analysis was structured around four questions a lending platform or credit-
 
 - Which loan grades generate the strongest risk-adjusted returns after expected losses?
 - At what interest rate does incremental yield stop compensating for incremental default risk?
-- How does portfolio performance vary across issuance cohorts, and what does that suggest about macroeconomic sensitivity?
-- Is the current portfolio allocation efficiently distributed across credit grades?
+- How does loan performance vary across issuance cohorts(vintage analysis)?
+- Which credit grades contribute most to portfolio risk and return?
 
 ---
 
@@ -53,9 +53,9 @@ credit-portfolio-analysis/
 │   └── report_generator.py      ← executive PDF report and data exports
 │
 ├── data/
-│   └── loans_cleaned.csv        ← dataset goes here
+│   └── loans_cleaned.csv        ← cleaned dataset
 │
-├── reports/                     ← all outputs written here on run
+├── reports/                     ← all outputs are saved here
 │
 ├── requirements.txt
 └── README.md
@@ -101,8 +101,8 @@ python run_analysis.py --data data/loans.csv --output my_reports
 | `grade_summary.csv` | Grade-level performance metrics |
 | `rate_bucket_summary.csv` | ROI and default rate across interest rate quintiles |
 | `cohort_summary.csv` | Portfolio performance by issuance year |
-| `portfolio_metrics.json` | Top-level KPIs in machine-readable format |
-| `insights.txt` | Plain-English analytical findings |
+| `portfolio_metrics.json` | KPIs in machine-readable format |
+| `insights.txt` | Analytical findings |
 | `pipeline.log` | Full audit log of the pipeline run |
 
 ---
@@ -123,7 +123,7 @@ Risk Analysis
 |--------|-------------|
 | `funded_amnt` | Loan principal amount |
 | `total_pymnt` | Total amount repaid by borrower |
-| `term` | Loan term in months (36 or 60) |
+| `term` | Loan term in months |
 | `loan_status` | e.g. "Fully Paid", "Charged Off", "Default" |
 | `grade` | Credit grade (A–G) |
 | `int_rate` | Annual interest rate |
@@ -136,12 +136,19 @@ Risk Analysis
 
 Analysis of the Lending Club portfolio surfaces several patterns relevant to credit allocation decisions:
 
-- Mid-tier credit grades (B–C) consistently deliver stronger risk-adjusted returns than high-yield grades, where default losses outpace the interest premium
-- Above a certain interest rate threshold, incremental yield no longer compensates for the corresponding increase in default frequency
-- Portfolio performance shows meaningful variation across issuance cohorts, suggesting macroeconomic conditions at origination have a lasting influence on loan outcomes
-- Recovery rates differ more significantly by credit grade than is commonly assumed, which materially affects expected-loss calculations at the segment level
+- Grade 'A' delivers the least negative risk-adjusted return (-0.22%) after accounting for a 5.9% default rate. Recommended for portfolio overweight.
 
-*Note: specific figures will reflect your dataset. The patterns above are directionally consistent across most sample periods.*
+- Grade 'G' has the lowest risk-adjusted ROI (-56.83%). High nominal yield is fully eroded by default losses — avoid or underweight.
+
+- Grade 'G' carries the highest default rate (51.6%). Position sizing must reflect tail-risk exposure.
+
+- The interest-rate sweet spot is bucket '(0.043, 0.089]' (avg 0.1%), producing the highest raw ROI (5.22%). Above this band, incremental default losses outpace the extra interest income.
+
+- Loans issued in 2013 showed the highest average ROI. Recent vintages are under-represented due to incomplete loan lifecycles — survivorship bias caution applies.
+
+- Portfolio-level risk-adjusted ROI is -15.03% versus a gross average ROI of 3.36%. The 18.39% spread represents the expected-loss drag on portfolio returns.
+
+- Overall, the analysis suggests that the Lending Club portfolio's risk profile is heavily influenced by lower-grade loans, where high nominal yields fail to compensate for elevated default risk. Portfolio performance could improve through greater allocation to higher-quality grades and tighter exposure limits on speculative segments.
 
 ---
 
